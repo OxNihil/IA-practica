@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="894392a3-3d4d-4928-ad2c-cc098c78dd3d" activeEnvironment="Default" name="TelcoService" resourceRoot="" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="74b85205-e98c-4f48-9877-8e456638cfd7" wsaVersion="NONE" name="casaBinding1" type="wsdl" bindingName="{TelcoServiceCA}casaBinding1" soapVersion="1_1" anonymous="optional" definition="http://localhost:7788/TelcoServiceCAService1/TelcoService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:7788/TelcoServiceCAService1/TelcoService?wsdl"><con:part><con:url>http://localhost:7788/TelcoServiceCAService1/TelcoService?wsdl</con:url><con:content><![CDATA[<definitions targetNamespace="TelcoServiceCA" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://j2ee.netbeans.org/wsdl/TelcoServiceBPEL/src/TelcoService" xmlns:tns="TelcoServiceCA" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <import namespace="http://j2ee.netbeans.org/wsdl/TelcoServiceBPEL/src/TelcoService" location="http://DESKTOP-MJ8PUCG:7788/TelcoServiceCA-sun-http-binding/TelcoServiceBPEL/TelcoService.wsdl"></import>
+  <portType name="dummyCasaPortType"></portType>
+  <binding name="casaBinding1" type="ns:TelcoServicePortType">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="TelcoServiceOperation">
+      <soap:operation/>
+      <input name="input1">
+        <soap:body use="literal" namespace="TelcoServiceCA"/>
+      </input>
+      <output name="output1">
+        <soap:body use="literal" namespace="TelcoServiceCA"/>
+      </output>
+    </operation>
+    <operation name="BillNotification">
+      <soap:operation/>
+      <input name="input2">
+        <soap:body use="literal" namespace="TelcoServiceCA"/>
+      </input>
+    </operation>
+    <operation name="PaidNotification">
+      <soap:operation/>
+      <input name="input3">
+        <soap:body use="literal" namespace="TelcoServiceCA"/>
+      </input>
+    </operation>
+  </binding>
+  <service name="TelcoServiceCAService1">
+    <port name="TelcoService" binding="tns:casaBinding1">
+      <soap:address location="http://DESKTOP-MJ8PUCG:7788/TelcoServiceCAService1/TelcoService"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://DESKTOP-MJ8PUCG:7788/TelcoServiceCA-sun-http-binding/TelcoServiceBPEL/TelcoService.wsdl</con:url><con:content><![CDATA[<definitions name="TelcoService" targetNamespace="http://j2ee.netbeans.org/wsdl/TelcoServiceBPEL/src/TelcoService" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://j2ee.netbeans.org/wsdl/TelcoServiceBPEL/src/TelcoService" xmlns:ns="http://rs.udc.es/billing" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+  <types>
+    <xsd:schema targetNamespace="http://j2ee.netbeans.org/wsdl/TelcoServiceBPEL/src/TelcoService">
+      <xsd:import namespace="http://rs.udc.es/billing" schemaLocation="BillingProviderService_schema1.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="TelcoServiceOperationRequest">
+    <part name="id_client" type="xsd:long"/>
+    <part name="month" type="xsd:int"/>
+    <part name="year" type="xsd:int"/>
+  </message>
+  <message name="TelcoServiceOperationResponse">
+    <part name="id_bill" type="xsd:long"/>
+    <part name="total_amount" type="xsd:double"/>
+    <part name="charged" type="xsd:boolean"/>
+    <part name="billed_phonecalls" type="ns:pricedPhoneCallsList"/>
+  </message>
+  <message name="BillNotification">
+    <part name="id_client" type="xsd:long"/>
+    <part name="month" type="xsd:int"/>
+    <part name="year" type="xsd:int"/>
+  </message>
+  <message name="PaidNotification">
+    <part name="id_client" type="xsd:long"/>
+    <part name="month" type="xsd:int"/>
+    <part name="year" type="xsd:int"/>
+    <part name="isPaid" type="xsd:boolean"/>
+  </message>
+  <portType name="TelcoServicePortType">
+    <operation name="TelcoServiceOperation">
+      <input name="input1" message="tns:TelcoServiceOperationRequest"/>
+      <output name="output1" message="tns:TelcoServiceOperationResponse"/>
+    </operation>
+    <operation name="BillNotification">
+      <input name="input2" message="tns:BillNotification"/>
+    </operation>
+    <operation name="PaidNotification">
+      <input name="input3" message="tns:PaidNotification"/>
+    </operation>
+  </portType>
+  <plnk:partnerLinkType name="TelcoService">
+    <!--A partner link type is automatically generated when a new port type is added. Partner link types are used by BPEL processes. 
+In a BPEL process, a partner link represents the interaction between the BPEL process and a partner service. Each partner link is associated with a partner link type.
+A partner link type characterizes the conversational relationship between two services. The partner link type can have one or two roles.-->
+    <plnk:role name="TelcoServicePortTypeRole" portType="tns:TelcoServicePortType"/>
+  </plnk:partnerLinkType>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://DESKTOP-MJ8PUCG:7788/TelcoServiceCA-sun-http-binding/TelcoServiceBPEL/BillingProviderService_schema1.xsd</con:url><con:content><![CDATA[<!--Published by JAX-WS RI (https://github.com/eclipse-ee4j/metro-jax-ws). RI's version is JAX-WS RI 3.0.2 git-revision#91dd558.-->
+<xs:schema version="1.0" targetNamespace="http://rs.udc.es/billing" xmlns:tns="http://rs.udc.es/billing" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="createAndSendBill" type="tns:createAndSendBill"/>
+  <xs:element name="createAndSendBillResponse" type="tns:createAndSendBillResponse"/>
+  <xs:complexType name="createAndSendBill">
+    <xs:sequence>
+      <xs:element name="customerId" type="xs:long" minOccurs="0"/>
+      <xs:element name="month" type="xs:short"/>
+      <xs:element name="year" type="xs:short"/>
+      <xs:sequence>
+        <xs:element name="priced-call" type="tns:pricedPhoneCall" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:element name="discount" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pricedPhoneCall">
+    <xs:sequence>
+      <xs:element name="customerId" type="xs:long" minOccurs="0"/>
+      <xs:element name="destinationNumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="duration" type="xs:long" minOccurs="0"/>
+      <xs:element name="phoneCallId" type="xs:long" minOccurs="0"/>
+      <xs:element name="phoneCallType" type="tns:phoneCallType" minOccurs="0"/>
+      <xs:element name="price" type="xs:double"/>
+      <xs:element name="startDate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="type" type="tns:phoneCallType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pricedPhoneCallsList">
+    <xs:sequence>
+      <xs:element name="priced-call" type="tns:pricedPhoneCall" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createAndSendBillResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:billSummary" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="billSummary">
+    <xs:sequence>
+      <xs:element name="amount" type="xs:double"/>
+      <xs:element name="billId" type="xs:long" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="phoneCallType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="LOCAL"/>
+      <xs:enumeration value="NATIONAL"/>
+      <xs:enumeration value="INTERNATIONAL"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://DESKTOP-MJ8PUCG:7788/TelcoServiceCAService1/TelcoService</con:endpoint></con:endpoints><con:operation id="e2faee33-7e19-470d-8732-c4107b10754f" isOneWay="false" action="" name="BillNotification" bindingOperationName="BillNotification" type="One-Way" inputName="input2" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a46299ec-3b4c-4033-be30-5a5d8722b214" name="Request1 B"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:7788/TelcoServiceCAService1/TelcoService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tel="TelcoServiceCA">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tel:BillNotification>\r
+         <id_client>2</id_client>\r
+         <month>9</month>\r
+         <year>2021</year>\r
+      </tel:BillNotification>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="TelcoServiceCA/TelcoServicePortType/input2"/><con:wsrmConfig version="1.2"/></con:call><con:call id="24e72b27-5f54-41b3-ac6c-4ac268a3abbd" name="Request 2 B"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:7788/TelcoServiceCAService1/TelcoService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tel="TelcoServiceCA">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tel:BillNotification>\r
+         <id_client>2</id_client>\r
+         <month>8</month>\r
+         <year>2021</year>\r
+      </tel:BillNotification>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="TelcoServiceCA/TelcoServicePortType/input2"/><con:wsrmConfig version="1.2"/></con:call><con:call id="5827f4ae-2660-425e-800c-783e52d0da73" name="Request3 B"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:7788/TelcoServiceCAService1/TelcoService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tel="TelcoServiceCA">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tel:BillNotification>\r
+         <id_client>1</id_client>\r
+         <month>9</month>\r
+         <year>2021</year>\r
+      </tel:BillNotification>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="TelcoServiceCA/TelcoServicePortType/input2"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="03e91426-cc5e-4bab-8189-d801b7b6ef9d" isOneWay="false" action="" name="PaidNotification" bindingOperationName="PaidNotification" type="One-Way" inputName="input3" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="428f38fd-9a88-45c2-856c-91be2cf92930" name="Request1 C"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:7788/TelcoServiceCAService1/TelcoService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tel="TelcoServiceCA">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tel:PaidNotification>\r
+         <id_client>2</id_client>\r
+         <month>9</month>\r
+         <year>2021</year>\r
+         <isPaid>true</isPaid>\r
+      </tel:PaidNotification>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="TelcoServiceCA/TelcoServicePortType/input3"/><con:wsrmConfig version="1.2"/></con:call><con:call id="1d3b0513-105b-458d-b03c-dbdac4414d0c" name="Request 2 C"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:7788/TelcoServiceCAService1/TelcoService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tel="TelcoServiceCA">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tel:PaidNotification>\r
+         <id_client>2</id_client>\r
+         <month>8</month>\r
+         <year>2021</year>\r
+         <isPaid>false</isPaid>\r
+      </tel:PaidNotification>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="TelcoServiceCA/TelcoServicePortType/input3"/><con:wsrmConfig version="1.2"/></con:call><con:call id="71659edf-9a68-4866-9884-3a855ba8fd38" name="Request3 C"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:7788/TelcoServiceCAService1/TelcoService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tel="TelcoServiceCA">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tel:PaidNotification>\r
+         <id_client>1</id_client>\r
+         <month>9</month>\r
+         <year>2021</year>\r
+         <isPaid>true</isPaid>\r
+      </tel:PaidNotification>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="TelcoServiceCA/TelcoServicePortType/input3"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="a07d3fba-0bba-4df7-bd6e-01db67fd0d7c" isOneWay="false" action="" name="TelcoServiceOperation" bindingOperationName="TelcoServiceOperation" type="Request-Response" outputName="output1" inputName="input1" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0099a14f-3e55-4ad9-82eb-bb6e9a9e26ed" name="Request1 A TelcoService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:7788/TelcoServiceCAService1/TelcoService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tel="TelcoServiceCA">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tel:TelcoServiceOperation>\r
+         <id_client>2</id_client>\r
+         <month>9</month>\r
+         <year>2021</year>\r
+      </tel:TelcoServiceOperation>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="TelcoServiceCA/TelcoServicePortType/input1"/><con:wsrmConfig version="1.2"/></con:call><con:call id="c4d8181a-a33e-4d67-9e2c-3a52526507ce" name="Request 2 A TelcoService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:7788/TelcoServiceCAService1/TelcoService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tel="TelcoServiceCA">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tel:TelcoServiceOperation>\r
+         <id_client>2</id_client>\r
+         <month>8</month>\r
+         <year>2021</year>\r
+      </tel:TelcoServiceOperation>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="TelcoServiceCA/TelcoServicePortType/input1"/><con:wsrmConfig version="1.2"/></con:call><con:call id="5a364fa7-b13f-4dd0-a731-57c65b9a7eec" name="Request3 A"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:7788/TelcoServiceCAService1/TelcoService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tel="TelcoServiceCA">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tel:TelcoServiceOperation>\r
+         <id_client>1</id_client>\r
+         <month>9</month>\r
+         <year>2021</year>\r
+      </tel:TelcoServiceOperation>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="TelcoServiceCA/TelcoServicePortType/input1"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints xmlns='http://java.sun.com/xml/ns/jax-ws/ri/runtime' version='2.0'>
+
+    <endpoint
+            name='RatingProvider'
+            implementation='es.udc.rs.wscontrib.rating.service.RatingService'
+            url-pattern='/services/RatingService'/>
+    <endpoint
+            name='BillingProvider'
+            implementation='es.udc.rs.wscontrib.billing.service.BillingService'
+            url-pattern='/services/BillingService'/>
+    <endpoint
+            name='RewardProvider'
+            implementation='es.udc.rs.wscontrib.reward.service.RewardService'
+            url-pattern='/services/RewardService'/>
+
+    <endpoint
+            name='TelcoProvider'
+            implementation='es.udc.rs.wscontrib.telco.service.TelcoService'
+            url-pattern='/services/TelcoService'/>
+    
+</endpoints>

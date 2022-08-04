@@ -1,0 +1,140 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>rs-telco-wscontrib</artifactId>
+	<groupId>es.udc.rs.telco.wscontrib</groupId>
+	<version>3.5.0</version>
+	<packaging>war</packaging>
+	<name>RS-Telco-WSContrib Subsystem</name>
+
+	<!-- =================================================================== -->
+	<!-- Default values for properties. These default values are expected to 
+		be valid for most profiles. Specific profiles can overwrite values when necessary. -->
+	<properties>
+
+		<!-- Encoding -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- Package versions (except those defined in "profiles" section) -->
+		<jaxws.version>3.0.2</jaxws.version>
+		<jaxb.version>3.0.2</jaxb.version>
+
+		<!-- Plugin versions -->
+		<compilerMavenPlugin.version>3.8.1</compilerMavenPlugin.version>
+		<jettyMavenPlugin>11.0.6</jettyMavenPlugin>
+		<jaxwsMavenPlugin>2.6</jaxwsMavenPlugin>
+		<enforcerMavenPlugin.version>3.0.0</enforcerMavenPlugin.version>
+		<warMavenPlugin.version>3.3.1</warMavenPlugin.version>
+
+	</properties>
+
+	<!-- ========================================================== -->
+	<!-- Additional repositories -->
+	<repositories>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.sun.xml.ws</groupId>
+			<artifactId>jaxws-ri</artifactId>
+			<version>${jaxws.version}</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>${jaxb.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+
+		<plugins>
+
+			<!-- ========================================================== -->
+			<!-- Compiler configuration -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${compilerMavenPlugin.version}</version>
+				<configuration>
+					<verbose>true</verbose>
+					<!-- Source & target are not necessary, but intelliJ depends on it to set the Java compiler settings  -->
+					<source>11</source>
+					<target>11</target>					
+					<release>11</release>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<showDeprecation>true</showDeprecation>
+					<showWarnings>true</showWarnings>
+				</configuration>
+			</plugin>
+
+			<!-- ========================================================== -->
+			<!-- ========================================================== -->
+			<!-- Assembly configuration -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptors>
+						<descriptor>src/main/assembly/src.xml</descriptor>
+					</descriptors>
+				</configuration>
+			</plugin>
+
+			<!-- ========================================================== -->
+			<!-- Jetty configuration -->
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jettyMavenPlugin}</version>
+
+				<configuration>
+					<httpConnector>
+						<port>7070</port>
+					</httpConnector>
+					<webApp>
+						<contextPath>/${project.artifactId}</contextPath>
+					</webApp>
+					<scan>0</scan>
+				</configuration>
+				
+			</plugin>
+
+			<!-- ========================================================== -->
+			<!-- War plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${warMavenPlugin.version}</version>
+			</plugin>
+
+			<!-- ========================================================== -->
+			<!-- Enforcer configuration -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>${enforcerMavenPlugin.version}</version>
+				<executions>
+					<execution>
+						<id>enforce-maven</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireMavenVersion>
+									<version>3.5.0</version>
+								</requireMavenVersion>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+
+	</build>
+
+</project>
