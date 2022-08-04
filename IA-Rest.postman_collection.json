@@ -1,0 +1,484 @@
+{
+	"info": {
+		"_postman_id": "1b178876-5322-4eb0-9f9b-d4cf8b125064",
+		"name": "IA-Rest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "2. UpdateClient",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\":\"Cliente Segundo Modificado\",\r\n\"dni\":\"87654321H\",\r\n\"address\":\"María Pita nº1\",\r\n\"phoneNumber\": \"981222222\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7070/rs-telco-service/clients/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"rs-telco-service",
+						"clients",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.1 GetCliendByIdNotExistant",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7070/rs-telco-service/clients/99",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"rs-telco-service",
+						"clients",
+						"99"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.2 GetClientById2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7070/rs-telco-service/clients/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"rs-telco-service",
+						"clients",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.1 GetClientByDni33333333A(NotExistant)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7070/rs-telco-service/clients/dni/71567241E",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"rs-telco-service",
+						"clients",
+						"dni",
+						"71567241E"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.2 GetClientByDni87654321H",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7070/rs-telco-service/clients/dni/71567241E",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"rs-telco-service",
+						"clients",
+						"dni",
+						"71567241E"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.1 GetClientListByKeyword(cliente)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7070/rs-telco-service/clients?keyword=juan",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"rs-telco-service",
+						"clients"
+					],
+					"query": [
+						{
+							"key": "keyword",
+							"value": "juan"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.2 GetClientListByKeyword(SEGUNDO)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7070/rs-telco-service/clients?keyword=juan",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"rs-telco-service",
+						"clients"
+					],
+					"query": [
+						{
+							"key": "keyword",
+							"value": "juan"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7.1 GetCallsPending(id1-1-2022)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7070/rs-telco-service/calls/callPending?id=1&month=2&year=2021",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"rs-telco-service",
+						"calls",
+						"callPending"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "month",
+							"value": "2"
+						},
+						{
+							"key": "year",
+							"value": "2021"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7.2 GetCallsPending(id1-10-2021)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7070/rs-telco-service/calls/callPending?id=1&month=2&year=2021",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"rs-telco-service",
+						"calls",
+						"callPending"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "month",
+							"value": "2"
+						},
+						{
+							"key": "year",
+							"value": "2021"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8.1 UpdateCallStatus(id1-11-2021)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "customerId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "year",
+							"value": "2021",
+							"type": "text"
+						},
+						{
+							"key": "month",
+							"value": "2",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7070/rs-telco-service/calls/updateStatus",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"rs-telco-service",
+						"calls",
+						"updateStatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8.2 UpdateCallStatus(id1-10-2021)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "customerId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "year",
+							"value": "2021",
+							"type": "text"
+						},
+						{
+							"key": "month",
+							"value": "2",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7070/rs-telco-service/calls/updateStatus",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"rs-telco-service",
+						"calls",
+						"updateStatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "9 GetCallsPending(id1-10-2021)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7070/rs-telco-service/calls/callPending?id=1&month=2&year=2021",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"rs-telco-service",
+						"calls",
+						"callPending"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "month",
+							"value": "2"
+						},
+						{
+							"key": "year",
+							"value": "2021"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "0.A GetClientList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7070/rs-telco-service/clients",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"rs-telco-service",
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "0. B FindCallsByIntervalBig",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7070/rs-telco-service/calls?customer=1&startDate=2021-02-01&endDate=2021-02-16",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"rs-telco-service",
+						"calls"
+					],
+					"query": [
+						{
+							"key": "customer",
+							"value": "1"
+						},
+						{
+							"key": "startDate",
+							"value": "2021-02-01"
+						},
+						{
+							"key": "endDate",
+							"value": "2021-02-16"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCliListByKeywordLimit",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7070/rs-telco-service/clients?keyword=juan&size=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"rs-telco-service",
+						"clients"
+					],
+					"query": [
+						{
+							"key": "keyword",
+							"value": "juan"
+						},
+						{
+							"key": "size",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCliListByStartLimit",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7070/rs-telco-service/clients?start=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7070",
+					"path": [
+						"rs-telco-service",
+						"clients"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
